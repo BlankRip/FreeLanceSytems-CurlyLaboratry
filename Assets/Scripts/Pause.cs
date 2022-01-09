@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using SaveSystem;
 
 public class Pause : MonoBehaviour
 {
@@ -73,12 +74,12 @@ public class Pause : MonoBehaviour
     }
 
     private void SaveGame() {
-        Debug.Log("Save game stuff here");
+        SaveManager.instance.Save();
     }
 
     private void BackToMenu() {
         yesButtonEvent.RemoveAllListeners();
-        yesButtonEvent.AddListener(() => {SceneManager.LoadScene(0);});
+        yesButtonEvent.AddListener(() => {Time.timeScale = 1; SceneManager.LoadScene(0);});
         unsaveDataWarning.SetActive(true);
     }
 

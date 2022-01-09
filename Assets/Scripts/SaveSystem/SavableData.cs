@@ -1,3 +1,3 @@
 ﻿namespace SaveSystem {
-    public class SavableData {    }
+    //public class SavableData {    }
 }

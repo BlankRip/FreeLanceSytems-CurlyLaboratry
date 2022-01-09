@@ -8,9 +8,12 @@ namespace JustTesting {
     {
         [SerializeField] Button theButton;
         [SerializeField] GameObject panelToShow;
+        [SerializeField] bool showValue;
         
         private void Start() {
-            theButton.onClick.AddListener(() => {panelToShow.SetActive(true);});
+            if(theButton == null)
+                theButton = GetComponent<Button>();
+            theButton.onClick.AddListener(() => {panelToShow.SetActive(showValue);});
         }
     }
 }

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SaveSystem {
+    [System.Serializable]
     public class SaveData : MonoBehaviour
     {
         public int levelSceneIndex;
-        public Dictionary<int, SavableData> objectsData;
+        public List<int> ids;
+        public List<object> objectDatas;
 
         public SaveData() {
             levelSceneIndex = 1;
-            objectsData = new Dictionary<int, SavableData>();
+            ids = new List<int>();
+            objectDatas = new List<object>();
         }
     }
 }

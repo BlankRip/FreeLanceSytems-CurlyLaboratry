@@ -16,6 +16,7 @@ namespace SaveSystem {
 
         public static SaveData ReadFromFile(int slotId) {
             string fileName = $"/Save_{slotId}.json";
+            Debug.Log(filePath);
             if(File.Exists(filePath + fileName)) {
                 string readData = File.ReadAllText(filePath + fileName);
                 SaveData recievedData = JsonUtility.FromJson<SaveData>(readData);

@@ -265,10 +265,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 118761840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ed1cb5890a6d84db108fff33829c64, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a05263cb2e372c408b57cde6c9de93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theButton: {fileID: 118761843}
+  theButton: {fileID: 0}
+  panelToShow: {fileID: 170112929}
+  showValue: 0
 --- !u!1 &140121758
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &170112930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -760,10 +762,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 722209099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ed1cb5890a6d84db108fff33829c64, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a05263cb2e372c408b57cde6c9de93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theButton: {fileID: 722209102}
+  theButton: {fileID: 0}
+  panelToShow: {fileID: 170112929}
+  showValue: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18ec1deff856164f87fab6f3eac8343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreenTag: LoadingScreen
 --- !u!1 &1619620065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,11 +1246,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619620065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a05263cb2e372c408b57cde6c9de93e, type: 3}
+  m_Script: {fileID: 11500000, guid: 08ed1cb5890a6d84db108fff33829c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   theButton: {fileID: 1619620067}
-  panelToShow: {fileID: 170112929}
 --- !u!1 &1991539672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,10 +1394,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991539672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ed1cb5890a6d84db108fff33829c64, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a05263cb2e372c408b57cde6c9de93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theButton: {fileID: 1991539675}
+  theButton: {fileID: 0}
+  panelToShow: {fileID: 170112929}
+  showValue: 0
 --- !u!1 &2097386690
 GameObject:
   m_ObjectHideFlags: 0

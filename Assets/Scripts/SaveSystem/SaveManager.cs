@@ -32,6 +32,7 @@ namespace SaveSystem {
             GameObject loadingScreen = GameObject.FindGameObjectWithTag(loadingScreenTag);
             yield return new WaitForSeconds(0.4f);
             Load();
+            loadingScreen.SetActive(false);
         }
         
         private void Load() {
@@ -40,7 +41,7 @@ namespace SaveSystem {
                 return;
             if(currentData.levelSceneIndex == SceneManager.GetActiveScene().buildIndex) {
                 foreach (KeyValuePair<int, ISavable> item in savables)
-                    item.Value.Load(currentData.objectsData[item.Key]);
+                    item.Value.Load(currentData.objectDatas[currentData.ids.IndexOf(item.Value.GetItemId())]);
             } else
                 Save();
         }
@@ -60,13 +61,16 @@ namespace SaveSystem {
 
         public void Save() {
             JsonReadWrite.WriteToFile(GetDataToSave(), currentSaveSlot);
+            Debug.Log("Saved Game");
         }
 
         private SaveData GetDataToSave() {
             SaveData data = new SaveData();
             data.levelSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            foreach (KeyValuePair<int, ISavable> item in savables)
-                data.objectsData.Add(item.Value.GetItemId(), item.Value.GetDataToSave());
+            foreach (KeyValuePair<int, ISavable> item in savables) {
+                data.ids.Add(item.Value.GetItemId());
+                data.objectDatas.Add(item.Value.GetDataToSave());
+            }
             return data;
         }
     }
