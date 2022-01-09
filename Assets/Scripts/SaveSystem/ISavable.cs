@@ -6,7 +6,7 @@ namespace SaveSystem {
     public interface ISavable
     {
         SavableData GetDataToSave();
-        void Load();
+        void Load(SavableData recievedData);
         int GetItemId();
         GameObject GetGameObject();
     }

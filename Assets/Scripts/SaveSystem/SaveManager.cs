@@ -8,7 +8,9 @@ namespace SaveSystem {
     {
         public static SaveManager instance;
 
+        [SerializeField] string loadingScreenTag = "LoadingScreen";
         private int currentSaveSlot;
+        private SaveData currentData;
         private Dictionary<int, ISavable> savables;
 
         private void Awake() {
@@ -23,6 +25,24 @@ namespace SaveSystem {
         public void SetuUpSaveSystem() {
             savables = new Dictionary<int, ISavable>();
             savables.Clear();
+            StartCoroutine(LoadInAFew());
+        }
+
+        private IEnumerator LoadInAFew() {
+            GameObject loadingScreen = GameObject.FindGameObjectWithTag(loadingScreenTag);
+            yield return new WaitForSeconds(0.4f);
+            Load();
+        }
+        
+        private void Load() {
+            SaveData currentData = JsonReadWrite.ReadFromFile(currentSaveSlot);
+            if(currentData == null)
+                return;
+            if(currentData.levelSceneIndex == SceneManager.GetActiveScene().buildIndex) {
+                foreach (KeyValuePair<int, ISavable> item in savables)
+                    item.Value.Load(currentData.objectsData[item.Key]);
+            } else
+                Save();
         }
 
         public void SetSaveSlot(int slot) {
@@ -39,7 +59,7 @@ namespace SaveSystem {
         }
 
         public void Save() {
-
+            JsonReadWrite.WriteToFile(GetDataToSave(), currentSaveSlot);
         }
 
         private SaveData GetDataToSave() {

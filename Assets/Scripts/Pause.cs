@@ -21,6 +21,7 @@ public class Pause : MonoBehaviour
     [SerializeField] Button no;
     [SerializeField] Button yes;
     private UnityEvent yesButtonEvent;
+    private bool canSave;
 
     private void Start() {
         yesButtonEvent = new UnityEvent();
@@ -93,5 +94,19 @@ public class Pause : MonoBehaviour
 
     private void RunYesEvent() {
         yesButtonEvent.Invoke();
+    }
+
+    public void ToggleCanSave(bool value) {
+        if(canSave != value)
+            canSave = value;
+        else
+            return;
+        
+        if(canSave)
+            saveGame.interactable = true;
+        else {
+            SaveGame();
+            saveGame.interactable = false;
+        }
     }
 }
