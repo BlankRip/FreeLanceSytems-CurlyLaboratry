@@ -24,5 +24,10 @@ namespace SaveSystem {
             } else
                 return null;
         }
+
+        public static void DeleteFile(int slotId) {
+            string fileName = $"/Save_{slotId}.json";
+            File.Delete(filePath + fileName);
+        }
     }
 }

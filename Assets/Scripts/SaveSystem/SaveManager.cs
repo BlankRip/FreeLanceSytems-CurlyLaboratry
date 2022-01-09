@@ -42,6 +42,7 @@ namespace SaveSystem {
             if(currentData.levelSceneIndex == SceneManager.GetActiveScene().buildIndex) {
                 foreach (KeyValuePair<int, ISavable> item in savables)
                     item.Value.Load(currentData.objectDatas[currentData.ids.IndexOf(item.Value.GetItemId())]);
+                Debug.Log("Loaded Game");
             } else
                 Save();
         }
@@ -72,6 +73,18 @@ namespace SaveSystem {
                 data.objectDatas.Add(item.Value.GetDataToSave());
             }
             return data;
+        }
+
+        public int GetLoadSceneIndex() {
+            SaveData currentData = JsonReadWrite.ReadFromFile(currentSaveSlot);
+            if(currentData == null)
+                return -1;
+            else
+                return currentData.levelSceneIndex;
+        }
+
+        public void ClearSlot() {
+            JsonReadWrite.DeleteFile(currentSaveSlot);
         }
     }
 }

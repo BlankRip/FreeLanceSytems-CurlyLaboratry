@@ -26,7 +26,6 @@ namespace JustTesting {
             }
             Vector3 moveTo = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
             transform.position = moveTo;
-            transform.Rotate(0, 3, 0);
         }
 
         public string GetDataToSave() {
