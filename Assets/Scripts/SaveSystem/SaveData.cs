@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace SaveSystem {
     [System.Serializable]
-    public class SaveData : MonoBehaviour
+    public class SaveData
     {
         public int levelSceneIndex;
         public List<int> ids;
-        public List<object> objectDatas;
+        public List<string> objectDatas;
 
         public SaveData() {
             levelSceneIndex = 1;
             ids = new List<int>();
-            objectDatas = new List<object>();
+            objectDatas = new List<string>();
         }
     }
 }

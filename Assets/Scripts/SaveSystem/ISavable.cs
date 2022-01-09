@@ -5,8 +5,8 @@ using UnityEngine;
 namespace SaveSystem {
     public interface ISavable
     {
-        object GetDataToSave();
-        void Load(object recievedData);
+        string GetDataToSave();
+        void Load(string recievedData);
         int GetItemId();
         GameObject GetGameObject();
     }

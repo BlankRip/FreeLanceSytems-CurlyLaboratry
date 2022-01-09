@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  flipAfter: 3
+  flipAfter: 7
   objectId: 1
 --- !u!65 &51156408
 BoxCollider:
@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  flipAfter: 0.5
+  flipAfter: 3
   objectId: 2
 --- !u!65 &663732705
 BoxCollider:
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  flipAfter: 3
+  flipAfter: 15
   objectId: 0
 --- !u!65 &1137238005
 BoxCollider:

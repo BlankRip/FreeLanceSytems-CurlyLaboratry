@@ -12,32 +12,32 @@ namespace JustTesting {
 
         [Header("Saving related things")]
         [SerializeField] int objectId;
+        private Vector3 refPoint;
 
         private void Start() {
+            refPoint = transform.position;
             SaveManager.instance.AddSavable(this);
-            StartCoroutine(FlipMove());
         }
 
         private void Update() {
+            if(Vector3.Distance(refPoint, transform.position) >= flipAfter) {
+                refPoint = transform.position;
+                speed *= -1;
+            }
             Vector3 moveTo = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
             transform.position = moveTo;
             transform.Rotate(0, 3, 0);
         }
 
-        IEnumerator FlipMove() {
-            yield return new WaitForSeconds(flipAfter);
-            speed *= -1;
-            StartCoroutine(FlipMove());
+        public string GetDataToSave() {
+            MySaveData dataToSend = new MySaveData(transform.position, refPoint);
+            return JsonUtility.ToJson(dataToSend);
         }
 
-        public object GetDataToSave() {
-            return new MySaveData(transform.position, transform.rotation);
-        }
-
-        public void Load(object recievedData) {
-            MySaveData data = (MySaveData)recievedData;
-            transform.rotation = new Quaternion(data.rotationX, data.rotationY, data.rotationZ, data.rotationW);
-            transform.position = new Vector3(data.positionX, data.positionY, data.positionZ);
+        public void Load(string recievedData) {
+            MySaveData data = JsonUtility.FromJson<MySaveData>(recievedData);
+            transform.position = data.position;
+            refPoint = data.referencePoint;
         }
 
         public int GetItemId() {
@@ -50,18 +50,12 @@ namespace JustTesting {
 
         [System.Serializable]
         private class MySaveData {
-            public float positionX, positionY, positionZ;
-            public float rotationX, rotationY, rotationZ, rotationW;
+            public Vector3 position;
+            public Vector3 referencePoint;
 
-            public MySaveData(Vector3 position, Quaternion rotation) {
-                positionX = position.x;
-                positionY = position.y;
-                positionZ = position.z;
-
-                rotationX = rotation.x;
-                rotationY = rotation.y;
-                rotationZ = rotation.z;
-                rotationW = rotation.w;
+            public MySaveData(Vector3 position, Vector3 refPoint) {
+                this.position = position;
+                this.referencePoint = refPoint;
             }
         }
     }
